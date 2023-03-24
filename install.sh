@@ -8,7 +8,7 @@ sudo apt-get install -y openssl
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install --beta
 
 # Load the original JSON configuration file
-json=$(curl -s https://raw.githubusercontent.com/sajjaddg/xray-reality/master/config.json)
+json=$(curl -s https://raw.githubusercontent.com/tsunamihell/xray-reality/master/config.json)
 
 # Generate public-private key pair
 keys=$(xray x25519)
