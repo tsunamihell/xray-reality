@@ -1,6 +1,12 @@
 {
-    "log": {
-    },
+  "api": {
+    "tag": "api",
+    "services": [
+      "HandlerService",
+      "LoggerService",
+      "StatsService"
+    ]
+  },
     "routing": {
         "domainStrategy": "IPIfNonMatch",
         "rules": [
