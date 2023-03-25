@@ -1,6 +1,6 @@
 {
     "log": {
-       "loglevel": "warning"
+#        "loglevel": "warning"
     },
     "routing": {
         "domainStrategy": "IPIfNonMatch",
@@ -27,12 +27,12 @@
     "inbounds": [
         {
             "listen": "0.0.0.0",
-            "port": 2053,
+            "port": 2083,
             "protocol": "vless",
             "settings": {
                 "clients": [
                     {
-                        "id": "", 
+                        "id": "",
                         "flow": "xtls-rprx-vision"
                     }
                 ],
@@ -67,7 +67,34 @@
                 ]
             }
         },
-      
+        {
+            "listen": "127.0.0.1",
+            "port": 8004,
+            "protocol": "vless",
+            "settings": {
+                "clients": [
+                    {
+                        "id": "",
+                        "flow": ""
+                    }
+                ],
+                "decryption": "none"
+            },
+            "streamSettings": {
+                "network": "h2",
+                "sockopt": {
+                    "acceptProxyProtocol": true
+                }
+            },
+            "sniffing": {
+                "enabled": true,
+                "destOverride": [
+                    "http",
+                    "tls"
+                ]
+            }
+        }
+    ],
     "outbounds": [
         {
             "protocol": "freedom",
