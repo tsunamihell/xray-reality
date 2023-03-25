@@ -7,94 +7,7 @@
       "StatsService"
     ]
   },
-    "routing": {
-        "domainStrategy": "IPIfNonMatch",
-        "rules": [
-            {
-                "type": "field",
-                "ip": [
-                    "geoip:ir"
-                ],
-                "outboundTag": "block"
-            }
-        ]
-    },
- "dns": {
-    "servers": [
-      "https+local://cloudflare-dns.com/dns-query",
-      "1.1.1.1",
-      "1.0.0.1",
-      "8.8.8.8",
-      "8.8.4.4",
-      "localhost"
-    ]
-  },
-    "inbounds": [
-        {
-            "listen": "0.0.0.0",
-            "port": 2083,
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "",
-                        "flow": "xtls-rprx-vision"
-                    }
-                ],
-                "decryption": "none",
-                "fallbacks": [
-                    {
-                        "dest": "8004",
-                        "xver": 1
-                    }
-                ]
-            },
-            "streamSettings": {
-                "network": "tcp",
-                "security": "reality",
-                "realitySettings": {
-                    "show": false,
-                    "dest": "www.yahoo.com:443",
-                    "xver": 0,
-                    "serverNames": [
-                        "yahoo.com",
-                        "www.yahoo.com"
-                    ],
-                    "privateKey": "",
-                    "shortIds": []
-                }
-            },
-            "sniffing": {
-                "enabled": true,
-                "destOverride": [
-                    "http",
-                    "tls"
-                ]
-            }
-        },
-      }
-            },
-            "sniffing": {
-                "enabled": true,
-                "destOverride": [
-                    "http",
-                    "tls"
-                ]
-            }
-        }
-    ],
-    "outbounds": [
-        {
-            "protocol": "freedom",
-            "tag": "direct"
-        },
-        {
-            "protocol": "blackhole",
-            "tag": "block"
-        }
-    ],
-
-"routing": {
+  "routing": {
     "domainStrategy": "IPIfNonMatch",
     "rules": [
       {
@@ -130,13 +43,103 @@
       }
     ]
   },
-
-    "policy": {
-        "levels": {
-            "0": {
-                "handshake": 2,
-                "connIdle": 120
-            }
+  "dns": {
+    "servers": [
+      "https+local://cloudflare-dns.com/dns-query",
+      "1.1.1.1",
+      "1.0.0.1",
+      "8.8.8.8",
+      "8.8.4.4",
+      "localhost"
+    ]
+  },
+  "inbounds": [
+    {
+      "listen": "0.0.0.0",
+      "port": 2083,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "",
+            "flow": "xtls-rprx-vision"
+          }
+        ],
+        "decryption": "none",
+        "fallbacks": [
+          {
+            "dest": "8004",
+            "xver": 1
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "show": false,
+          "dest": "www.yahoo.com:443",
+          "xver": 0,
+          "serverNames": [
+            "yahoo.com",
+            "www.yahoo.com"
+          ],
+          "privateKey": "",
+          "shortIds": []
         }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 8004,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "",
+            "flow": ""
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "h2",
+        "sockopt": {
+          "acceptProxyProtocol": true
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ]
+      }
     }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    },
+    {
+      "protocol": "blackhole",
+      "tag": "block"
+    }
+  ],
+  "policy": {
+    "levels": {
+      "0": {
+        "handshake": 2,
+        "connIdle": 120
+      }
+    }
+  }
 }
