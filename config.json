@@ -1,6 +1,6 @@
 {
     "log": {
-#        "loglevel": "warning"
+       "loglevel": "warning"
     },
     "routing": {
         "domainStrategy": "IPIfNonMatch",
@@ -32,7 +32,7 @@
             "settings": {
                 "clients": [
                     {
-                        "id": "", //CHANGE
+                        "id": "", 
                         "flow": "xtls-rprx-vision"
                     }
                 ],
