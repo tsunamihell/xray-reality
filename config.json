@@ -55,7 +55,7 @@
                         "yahoo.com",
                         "www.yahoo.com"
                     ],
-                    "privateKey": "", //CHANGE
+                    "privateKey": "",
                     "shortIds": []
                 }
             },
