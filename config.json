@@ -72,24 +72,7 @@
                 ]
             }
         },
-       # {
-            "listen": "127.0.0.1",
-            "port": 8004,
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "",
-                        "flow": ""
-                    }
-                ],
-                "decryption": "none"
-            },
-            "streamSettings": {
-                "network": "h2",
-                "sockopt": {
-                    "acceptProxyProtocol": true
-      #          }
+      }
             },
             "sniffing": {
                 "enabled": true,
